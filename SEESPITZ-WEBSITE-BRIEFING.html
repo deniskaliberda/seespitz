@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website-Briefing — Seespitz Gesamtkomplex</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #6366f1;
+    --accent-light: #e0e1ff;
+    --red: #ef4444;
+    --red-bg: #fef2f2;
+    --orange: #f59e0b;
+    --orange-bg: #fffbeb;
+    --green: #22c55e;
+    --green-bg: #f0fdf4;
+    --blue: #3b82f6;
+    --blue-bg: #eff6ff;
+    --cyan: #06b6d4;
+    --cyan-bg: #ecfeff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 16mm 14mm 16mm 14mm; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--gray-900);
+    background: #fff;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 16mm 14mm;
+  }
+
+  @media print {
+    body { padding: 0; max-width: none; }
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  .doc-header h1 {
+    font-size: 19pt;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+  }
+  .doc-header .subtitle {
+    font-size: 10pt;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+  .doc-badge {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .doc-badge.blue { background: var(--blue); color: #fff; }
+
+  /* ── Sections ── */
+  h2 {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 22px 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin: 12px 0 5px 0;
+  }
+  h4 {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 8px 0 3px 0;
+  }
+  p { margin-bottom: 5px; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 12px 0;
+    font-size: 8.5pt;
+  }
+  th, td {
+    padding: 5px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  th {
+    background: var(--gray-50);
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  td strong { color: var(--primary); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 2px;
+  }
+  .tag-red { background: var(--red-bg); color: var(--red); }
+  .tag-orange { background: var(--orange-bg); color: var(--orange); }
+  .tag-green { background: var(--green-bg); color: var(--green); }
+  .tag-blue { background: var(--blue-bg); color: var(--blue); }
+  .tag-cyan { background: var(--cyan-bg); color: var(--cyan); }
+  .tag-accent { background: var(--accent-light); color: var(--accent); }
+
+  /* ── Cards ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 8px 0 12px 0;
+  }
+  .card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: var(--gray-50);
+  }
+  .card p { font-size: 8.5pt; color: var(--gray-700); margin: 2px 0 0 0; }
+
+  /* ── Content blocks ── */
+  .content-block {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 8px 0 12px 0;
+    background: var(--gray-50);
+  }
+  .content-block.highlight {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, #fafaff, #f0f0ff);
+  }
+  .content-block.seo {
+    border-color: var(--green);
+    background: var(--green-bg);
+  }
+  .content-block.photo {
+    border-color: var(--cyan);
+    background: var(--cyan-bg);
+  }
+  .content-block.cta-block {
+    border-color: var(--orange);
+    background: var(--orange-bg);
+  }
+
+  /* ── Copytext ── */
+  .copytext {
+    background: #fff;
+    border: 1px dashed var(--gray-300);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    font-size: 9pt;
+    color: var(--gray-700);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .copytext::before {
+    content: 'TEXTVORSCHLAG';
+    display: block;
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    font-style: normal;
+  }
+
+  /* ── Sitemap visual ── */
+  .sitemap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 10px 0 14px 0;
+  }
+  .sitemap-item {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .sitemap-item.main {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--accent-light), #f0f0ff);
+    border-color: var(--accent);
+  }
+  .sitemap-item .name {
+    font-weight: 700;
+    font-size: 9pt;
+    color: var(--primary);
+  }
+  .sitemap-item .url {
+    font-size: 7pt;
+    color: var(--gray-500);
+    font-family: monospace;
+  }
+  .sitemap-item .schema {
+    font-size: 7pt;
+    margin-top: 3px;
+  }
+
+  /* ── Lists ── */
+  ul, ol { margin: 4px 0 8px 16px; }
+  li { margin-bottom: 2px; }
+
+  /* ── Checklist ── */
+  .checklist {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .checklist li {
+    padding: 3px 0 3px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 8.5pt;
+  }
+  .checklist li::before {
+    content: '\2610';
+    position: absolute;
+    left: 0;
+    font-size: 10pt;
+    color: var(--gray-300);
+  }
+
+  /* ── Code block ── */
+  .code-block {
+    background: var(--gray-900);
+    color: #a5f3fc;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 7.5pt;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 6px 0 10px 0;
+    white-space: pre;
+  }
+  .code-block .comment { color: #6b7280; }
+  .code-block .key { color: #c084fc; }
+  .code-block .string { color: #86efac; }
+  .code-block .bracket { color: #fbbf24; }
+
+  /* ── Stat row ── */
+  .stat-row {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 12px 0;
+  }
+  .stat-box {
+    flex: 1;
+    text-align: center;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 10px 6px;
+  }
+  .stat-box .value {
+    font-size: 16pt;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-box .label {
+    font-size: 7pt;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 1px;
+  }
+
+  /* ── Footer ── */
+  .doc-footer {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid var(--gray-200);
+    font-size: 7pt;
+    color: var(--gray-500);
+    text-align: center;
+  }
+
+  /* ── Page section headers ── */
+  .page-section {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 16px 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-section h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 11pt;
+  }
+  .page-section .page-url {
+    font-family: monospace;
+    font-size: 8pt;
+    color: rgba(255,255,255,0.6);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="doc-header">
+  <h1>Website-Briefing: Seespitz Gesamtkomplex</h1>
+  <div class="subtitle">Komplette Arbeitsanleitung für den Website-Bau — Restaurant + Gästehaus + Tagung + Events</div>
+  <div class="doc-badge blue">Website-Konzept — Denis Kaliberda / MyHiwi UG — 19. Februar 2026</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     1. UNTERNEHMENSBESCHREIBUNG
+     ═══════════════════════════════════════════════════════════════ -->
+<h2>1. Unternehmensbeschreibung</h2>
+
+<p>Der <strong>Seespitz-Komplex</strong> in Herrsching am Ammersee umfasst zwei Betriebe unter einem Dach — geführt von <strong>Felix Schuck</strong>. Zusammen bilden sie ein einzigartiges Ökosystem aus Gastronomie, Hotellerie, Tagung und Events, das kein Wettbewerber am Ammersee in dieser Form bietet.</p>
+
+<div class="card-grid">
+  <div class="card no-break">
+    <h4>Restaurant Seespitz</h4>
+    <table>
+      <tr><td><strong>Küche</strong></td><td>Mediterran / Europäisch, gehobenes Casual Dining</td></tr>
+      <tr><td><strong>Küchenchef</strong></td><td>Daniel Böhm</td></tr>
+      <tr><td><strong>Kapazität</strong></td><td>100 Sitzplätze + 100 Stehplätze, 100 m²</td></tr>
+      <tr><td><strong>Galerie</strong></td><td>Exklusiver Raum für bis zu 40 Personen</td></tr>
+      <tr><td><strong>Preiskategorie</strong></td><td>Hauptgerichte unter €30</td></tr>
+      <tr><td><strong>Öffnungszeiten</strong></td><td>Täglich 11:30–23:00</td></tr>
+      <tr><td><strong>Reservierung</strong></td><td>OpenTable (aktiv)</td></tr>
+      <tr><td><strong>Events</strong></td><td>Hochzeiten, Firmenfeiern, Geburtstage, PR-Events</td></tr>
+      <tr><td><strong>Ausstattung</strong></td><td>WLAN, Beamer, Leinwand, Soundsystem</td></tr>
+      <tr><td><strong>Adresse</strong></td><td>Mühlfeld 2, 82211 Herrsching am Ammersee</td></tr>
+      <tr><td><strong>Telefon</strong></td><td>08152/4849654</td></tr>
+      <tr><td><strong>E-Mail</strong></td><td>info@seespitz-ammersee.de</td></tr>
+    </table>
+  </div>
+  <div class="card no-break">
+    <h4>Seespitz Gästehaus</h4>
+    <table>
+      <tr><td><strong>Zimmer</strong></td><td>17 Einheiten, 8 Typen (21–59 m²)</td></tr>
+      <tr><td><strong>Tagungsraum</strong></td><td>82 m², bis 30 Pers., teilbar</td></tr>
+      <tr><td><strong>Frühstück</strong></td><td>Tägliches Buffet (inklusive)</td></tr>
+      <tr><td><strong>Parking</strong></td><td>Eigene Tiefgarage + E-Ladestationen</td></tr>
+      <tr><td><strong>Preise</strong></td><td>ab ~€110–139/Nacht</td></tr>
+      <tr><td><strong>MICE</strong></td><td>Seminare, Incentives, Teambuilding</td></tr>
+      <tr><td><strong>Sprachen</strong></td><td>Deutsch + Englisch</td></tr>
+      <tr><td><strong>Buchungsportale</strong></td><td>Booking.com, Expedia, Kayak, Trivago, Check24</td></tr>
+      <tr><td><strong>Adresse</strong></td><td>Mühlfelderstr. 72, 82211 Herrsching</td></tr>
+      <tr><td><strong>Telefon</strong></td><td>+49 8152 93 00 0</td></tr>
+      <tr><td><strong>E-Mail</strong></td><td>felix.schuck@seespitz-gaestehaus.de</td></tr>
+    </table>
+  </div>
+</div>
+
+<h3>8 Zimmertypen</h3>
+<table>
+  <thead><tr><th>Typ</th><th>Größe</th><th>Besonderheit</th><th>Für wen</th></tr></thead>
+  <tbody>
+    <tr><td>Doppelzimmer</td><td>25 m²</td><td>Standard</td><td>Geschäftsreisende, Kurztrips</td></tr>
+    <tr><td>Doppelzimmer mit Terrasse</td><td>21 m²</td><td>Erdgeschoss, Terrassenzugang</td><td>Paare, Naturliebhaber</td></tr>
+    <tr><td>Superior Doppelzimmer</td><td>21 m²</td><td>Gehobene Ausstattung</td><td>Anspruchsvolle Gäste</td></tr>
+    <tr><td>Deluxe DZ mit Balkon</td><td>28 m²</td><td>Balkon + Seeblick</td><td>Paare, Jubiläen</td></tr>
+    <tr><td>Junior Suite mit Balkon</td><td>30 m²</td><td>Suite-Kategorie</td><td>Hochzeitsgäste, Upgrades</td></tr>
+    <tr><td>Suite mit Seeblick</td><td>42 m²</td><td>Premium, großzügig</td><td>Brautpaar, VIP-Gäste</td></tr>
+    <tr><td>Apartment (1 Schlafzimmer)</td><td>35 m²</td><td>Küchenzeile</td><td>Familien, Langzeitgäste</td></tr>
+    <tr><td>Apartment mit Seeblick</td><td>59 m²</td><td>Größte Einheit, Küchenzeile</td><td>Familien-Reunions, Extended Stay</td></tr>
+  </tbody>
+</table>
+<p><strong>Alle Zimmer:</strong> Balkon/Terrasse, Seeblick, Flat-Screen TV, Safe, Haartrockner, WLAN</p>
+
+<h3>Tagungsraum</h3>
+<table>
+  <tr><td><strong>Fläche</strong></td><td>82 m² (teilbar in 2x 38–44 m²)</td></tr>
+  <tr><td><strong>Kapazität</strong></td><td>bis 30 Personen</td></tr>
+  <tr><td><strong>Technik</strong></td><td>85" Multimedia-Screen mit Click Share, Whiteboards, Rednerpult, Highspeed-WLAN</td></tr>
+  <tr><td><strong>Bestuhlungen</strong></td><td>Parlamentarisch, U-Form, Quadrat, Stuhlkreis, Reihenbestuhlung</td></tr>
+  <tr><td><strong>Lage</strong></td><td>Direkt am Wasser mit Seeblick</td></tr>
+</table>
+
+<h3>Bewertungen & Social Proof</h3>
+<div class="stat-row">
+  <div class="stat-box"><div class="value" style="color:var(--green);">4,7</div><div class="label">OpenTable (~500 Reviews)</div></div>
+  <div class="stat-box"><div class="value" style="color:var(--orange);">4,2</div><div class="label">TripAdvisor (45 Reviews)</div></div>
+  <div class="stat-box"><div class="value" style="color:var(--blue);">9,7</div><div class="label">Booking.com (Lage)</div></div>
+  <div class="stat-box"><div class="value" style="color:var(--accent);">#3</div><div class="label">von 40 Restaurants</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     2. USPs & SELLING POINTS
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<h2>2. USPs & Selling Points (für die gesamte Website)</h2>
+
+<p>Diese 8 USPs sollten sich durch die gesamte Website ziehen — als Headlines, in Teasern, auf der Startseite und in Meta-Descriptions.</p>
+
+<table>
+  <thead><tr><th>#</th><th>USP</th><th>Headline-Vorschlag</th><th>Wo einsetzen</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Bester Sonnenuntergangs-Blick am Ammersee</strong></td><td>„Wo der Ammersee golden wird"</td><td>Startseite Hero, Restaurant, Galerie</td></tr>
+    <tr><td>2</td><td><strong>Mediterrane Küche in bayerischer Umgebung</strong></td><td>„Mediterranes Flair am Ammersee"</td><td>Restaurant, Startseite</td></tr>
+    <tr><td>3</td><td><strong>Einziges Komplettpaket am Ammersee</strong><br>Restaurant + 17 Zimmer + Tagungsraum + Eventlocation</td><td>„Alles unter einem Dach — direkt am See"</td><td>Startseite, Events, Tagung</td></tr>
+    <tr><td>4</td><td><strong>82 m² Tagungsraum direkt am Wasser</strong><br>85" Screen, Click Share, teilbar</td><td>„Tagen mit Seeblick"</td><td>Tagung, MICE-Seite</td></tr>
+    <tr><td>5</td><td><strong>4,7 Sterne bei 500+ Bewertungen</strong></td><td>„Von unseren Gästen bestätigt"</td><td>Startseite, Restaurant, Footer</td></tr>
+    <tr><td>6</td><td><strong>Längste Seepromenade Deutschlands vor der Tür</strong></td><td>„Direkt an Deutschlands längster Seepromenade"</td><td>Aktivitäten, Startseite, Gästehaus</td></tr>
+    <tr><td>7</td><td><strong>Hochzeits-Komplettpaket</strong><br>Feier + Übernachtung + Brunch am See</td><td>„Ihre Traumhochzeit am Ammersee"</td><td>Events & Hochzeiten</td></tr>
+    <tr><td>8</td><td><strong>E-Ladestationen + Tiefgarage</strong></td><td>„Nachhaltig ankommen, entspannt genießen"</td><td>Kontakt, Gästehaus, Footer</td></tr>
+  </tbody>
+</table>
+
+<div class="content-block highlight no-break">
+  <h4>Killer-Argument (Cross-Selling)</h4>
+  <p><strong>Kein einziger Wettbewerber am Ammersee bietet Restaurant + Gästehaus + Tagungsraum + Eventlocation aus einer Hand.</strong> Dieses Alleinstellungsmerkmal muss auf der Startseite und jeder Unterseite spürbar sein.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     3. SEITENSTRUKTUR / SITEMAP
+     ═══════════════════════════════════════════════════════════════ -->
+<h2>3. Seitenstruktur / Sitemap</h2>
+
+<p>Empfehlung: <strong>Eine gemeinsame Website</strong> für den gesamten Komplex (statt 2 separate Seiten). Spart Kosten, stärkt SEO, zeigt die Einheit.</p>
+
+<div class="sitemap">
+  <div class="sitemap-item main">
+    <div class="name">Startseite</div>
+    <div class="url">/</div>
+    <div class="schema"><span class="tag tag-accent">WebSite</span> <span class="tag tag-accent">Organization</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Restaurant</div>
+    <div class="url">/restaurant</div>
+    <div class="schema"><span class="tag tag-green">Restaurant</span> <span class="tag tag-green">Menu</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Gästehaus</div>
+    <div class="url">/gaestehaus</div>
+    <div class="schema"><span class="tag tag-green">LodgingBusiness</span> <span class="tag tag-green">Hotel</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Tagung & Seminare</div>
+    <div class="url">/tagung</div>
+    <div class="schema"><span class="tag tag-green">MeetingRoom</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Events & Hochzeiten</div>
+    <div class="url">/events</div>
+    <div class="schema"><span class="tag tag-green">EventVenue</span> <span class="tag tag-green">Event</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Aktivitäten</div>
+    <div class="url">/aktivitaeten</div>
+    <div class="schema"><span class="tag tag-blue">TouristAttraction</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Galerie</div>
+    <div class="url">/galerie</div>
+    <div class="schema"><span class="tag tag-blue">ImageGallery</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Kontakt & Anfahrt</div>
+    <div class="url">/kontakt</div>
+    <div class="schema"><span class="tag tag-green">LocalBusiness</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Über uns</div>
+    <div class="url">/ueber-uns</div>
+    <div class="schema"><span class="tag tag-blue">AboutPage</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Blog</div>
+    <div class="url">/blog</div>
+    <div class="schema"><span class="tag tag-blue">Blog</span> <span class="tag tag-blue">Article</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Speisekarte</div>
+    <div class="url">/speisekarte</div>
+    <div class="schema"><span class="tag tag-green">Menu</span> <span class="tag tag-green">MenuItem</span></div>
+  </div>
+  <div class="sitemap-item">
+    <div class="name">Impressum / Datenschutz</div>
+    <div class="url">/impressum</div>
+    <div class="schema">—</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     4. CONTENT-BRIEFING PRO SEITE
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<h2>4. Content-Briefing pro Seite</h2>
+
+<!-- ── STARTSEITE ── -->
+<div class="page-section">
+  <h3>Startseite</h3>
+  <span class="page-url">/</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Erster Eindruck, Überblick über den gesamten Komplex, Weiterleitung zu Unterseiten</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Restaurant Ammersee, Restaurant Herrsching</td></tr>
+  <tr><td><strong>Sekundär-Keywords</strong></td><td>Gästehaus Ammersee, Eventlocation Ammersee, Seeblick Restaurant</td></tr>
+  <tr><td><strong>Schema</strong></td><td>WebSite + Organization + Restaurant (Zusammenfassung)</td></tr>
+</table>
+
+<h4>Überschriften-Struktur</h4>
+<ul>
+  <li><strong>H1:</strong> „Seespitz — Restaurant, Gästehaus & Events am Ammersee"</li>
+  <li><strong>H2:</strong> „Mediterranes Flair direkt am Ammersee"</li>
+  <li><strong>H2:</strong> „Unser Gästehaus — 17 Zimmer mit Seeblick"</li>
+  <li><strong>H2:</strong> „Tagen, feiern, genießen — alles unter einem Dach"</li>
+  <li><strong>H2:</strong> „Was unsere Gäste sagen" (Bewertungen)</li>
+</ul>
+
+<div class="copytext">
+Willkommen im Seespitz — Ihrem mediterranen Rückzugsort direkt am Ammersee. Genießen Sie gehobene Küche mit dem schönsten Sonnenuntergangs-Blick am See, übernachten Sie in einem unserer 17 Zimmer mit Seeblick oder planen Sie Ihr nächstes Event in einzigartiger Atmosphäre. Restaurant, Gästehaus, Tagungsraum und Eventlocation — alles an einem Ort, direkt an Deutschlands längster Seepromenade.
+</div>
+
+<h4>Sektionen</h4>
+<ol>
+  <li><strong>Hero:</strong> Vollbild-Foto Sonnenuntergang + „Wo der Ammersee golden wird" + CTA „Tisch reservieren" / „Zimmer buchen"</li>
+  <li><strong>3-Kacheln:</strong> Restaurant | Gästehaus | Tagung & Events — je mit Bild, Kurztext, Link</li>
+  <li><strong>USP-Leiste:</strong> 4,7 Sterne | 17 Zimmer | 82m² Tagungsraum | E-Ladestationen</li>
+  <li><strong>Bewertungen:</strong> 2–3 ausgewählte OpenTable-Zitate + Sterne-Grafik</li>
+  <li><strong>Anfahrt-Teaser:</strong> Mini-Map + „15 eigene Parkplätze, Tiefgarage, E-Ladestationen"</li>
+  <li><strong>Instagram-Feed:</strong> Letzte 6 Posts von @seespitz.ammersee einbinden</li>
+</ol>
+
+<div class="content-block photo no-break">
+  <h4>Fotos benötigt</h4>
+  <ul class="checklist">
+    <li>Hero: Sonnenuntergang über dem Ammersee vom Restaurant aus</li>
+    <li>Restaurant-Innenansicht (Ambiente, Tische, Licht)</li>
+    <li>Gästehaus-Außenansicht</li>
+    <li>Zimmerbeispiel (Suite oder Deluxe mit Seeblick)</li>
+    <li>Tagungsraum (Konferenz-Setup)</li>
+    <li>Gericht-Aufnahme (Signature Dish)</li>
+  </ul>
+</div>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Seespitz Herrsching — Restaurant, Gästehaus & Events am Ammersee</p>
+  <p><strong>Meta-Description:</strong> Mediterranes Restaurant mit Seeblick, 17 Zimmer Gästehaus, 82m² Tagungsraum und Eventlocation direkt am Ammersee. 4,7 Sterne bei 500+ Bewertungen. Jetzt reservieren!</p>
+</div>
+
+<!-- ── RESTAURANT ── -->
+<div class="page-break"></div>
+<div class="page-section">
+  <h3>Restaurant</h3>
+  <span class="page-url">/restaurant</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Gäste zum Reservieren motivieren, Atmosphäre transportieren, Speisekarte verlinken</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Restaurant Herrsching am Ammersee</td></tr>
+  <tr><td><strong>Sekundär-Keywords</strong></td><td>Mediterran Restaurant Ammersee, Essen Herrsching, Restaurant Seeblick Ammersee, Brunch Ammersee</td></tr>
+  <tr><td><strong>Schema</strong></td><td>Restaurant + AggregateRating + OpeningHoursSpecification + GeoCoordinates</td></tr>
+</table>
+
+<h4>Überschriften</h4>
+<ul>
+  <li><strong>H1:</strong> „Restaurant Seespitz — Mediterrane Küche am Ammersee"</li>
+  <li><strong>H2:</strong> „Unser Konzept"</li>
+  <li><strong>H2:</strong> „Die Speisekarte"</li>
+  <li><strong>H2:</strong> „Öffnungszeiten & Reservierung"</li>
+  <li><strong>H2:</strong> „Unsere Galerie — Ihr privater Raum"</li>
+</ul>
+
+<div class="copytext">
+Im Restaurant Seespitz verbinden wir mediterrane Kochkunst mit der einzigartigen Atmosphäre am Ammersee. Küchenchef Daniel Böhm kreiert saisonale Gerichte mit frischen, regionalen Zutaten — von hausgefertigter Pasta bis zu Fischspezialitäten direkt am See. Ob Mittagessen mit Panoramablick, romantisches Dinner zum Sonnenuntergang oder ein Glas Wein auf der Terrasse — bei uns wird jeder Besuch zu einem besonderen Erlebnis.
+</div>
+
+<h4>Sektionen</h4>
+<ol>
+  <li><strong>Hero:</strong> Restaurant-Interieur bei Abendlicht + „Mediterranes Flair am Ammersee"</li>
+  <li><strong>Konzept:</strong> Text über Küche, Chef Daniel Böhm, Philosophie (regional + mediterran)</li>
+  <li><strong>Speisekarte-Teaser:</strong> 3–4 Signature Dishes mit Fotos + Link zur vollen Karte</li>
+  <li><strong>Galerie-Sektion:</strong> Privatraum für 40 Pers., Beschreibung + CTA „Jetzt anfragen"</li>
+  <li><strong>Bewertungen:</strong> OpenTable 4,7/5 — 2 Zitate hervorheben</li>
+  <li><strong>Öffnungszeiten + Reservierungs-Widget:</strong> OpenTable oder eigenes Formular</li>
+</ol>
+
+<div class="content-block cta-block no-break">
+  <h4>Call-to-Actions</h4>
+  <ul>
+    <li>Primär: „Tisch reservieren" (OpenTable oder Formular)</li>
+    <li>Sekundär: „Speisekarte ansehen"</li>
+    <li>Tertiär: „Private Feier anfragen" (Galerie)</li>
+  </ul>
+</div>
+
+<div class="content-block photo no-break">
+  <h4>Fotos benötigt</h4>
+  <ul class="checklist">
+    <li>Innenansicht Restaurant (warm, einladend, Abendstimmung)</li>
+    <li>Terrasse mit Seeblick</li>
+    <li>3–4 Gerichte (professionelle Food-Fotografie)</li>
+    <li>Küchenchef Daniel Böhm (Portrait oder bei der Arbeit)</li>
+    <li>Galerie-Raum (für private Feiern)</li>
+    <li>Cocktail / Aperitif auf der Terrasse</li>
+  </ul>
+</div>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Restaurant Seespitz Herrsching — Mediterrane Küche am Ammersee</p>
+  <p><strong>Meta-Description:</strong> Gehobenes mediterranes Restaurant in Herrsching am Ammersee. Saisonale Küche von Chef Daniel Böhm, Terrasse mit Sonnenuntergangs-Blick. 4,7/5 auf OpenTable. Jetzt reservieren!</p>
+</div>
+
+<!-- ── SPEISEKARTE ── -->
+<div class="page-section">
+  <h3>Speisekarte</h3>
+  <span class="page-url">/speisekarte</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Gerichte zeigen, Appetit machen, zum Reservieren motivieren</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Speisekarte Restaurant Herrsching</td></tr>
+  <tr><td><strong>Schema</strong></td><td>Menu + MenuItem (mit Preisen und Beschreibung)</td></tr>
+</table>
+
+<h4>Überschriften</h4>
+<ul>
+  <li><strong>H1:</strong> „Unsere Speisekarte"</li>
+  <li><strong>H2:</strong> „Vorspeisen" / „Pasta & Risotto" / „Fisch & Meeresfrüchte" / „Fleisch" / „Desserts" / „Getränke"</li>
+</ul>
+
+<p>Speisekarte als <strong>HTML-Text</strong> (nicht als PDF!) einbinden — wichtig für SEO und Schema Markup. Jedes Gericht mit Name, Beschreibung und Preis. Optional: Foto bei Signature Dishes.</p>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Speisekarte — Restaurant Seespitz am Ammersee</p>
+  <p><strong>Meta-Description:</strong> Entdecken Sie unsere mediterrane Speisekarte: Frische Pasta, Fischgerichte, saisonale Highlights. Preise und Gerichte auf einen Blick. Restaurant Seespitz Herrsching.</p>
+  <p><strong>Wichtig:</strong> Menu-Schema mit allen MenuItems — Google kann diese in Rich Snippets anzeigen!</p>
+</div>
+
+<!-- ── GÄSTEHAUS ── -->
+<div class="page-break"></div>
+<div class="page-section">
+  <h3>Gästehaus</h3>
+  <span class="page-url">/gaestehaus</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Direktbuchungen generieren (statt Booking.com), Zimmertypen präsentieren</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Hotel Herrsching am Ammersee, Gästehaus Ammersee</td></tr>
+  <tr><td><strong>Sekundär-Keywords</strong></td><td>Übernachtung Ammersee, Zimmer mit Seeblick Ammersee, Pension Herrsching, Ferienwohnung Ammersee</td></tr>
+  <tr><td><strong>Schema</strong></td><td>LodgingBusiness + Hotel + Room (pro Zimmertyp) + AggregateRating</td></tr>
+</table>
+
+<h4>Überschriften</h4>
+<ul>
+  <li><strong>H1:</strong> „Seespitz Gästehaus — 17 Zimmer mit Seeblick am Ammersee"</li>
+  <li><strong>H2:</strong> „Unsere Zimmer & Suiten"</li>
+  <li><strong>H2:</strong> „Frühstück mit Panoramablick"</li>
+  <li><strong>H2:</strong> „Direkt buchen — bester Preis garantiert"</li>
+</ul>
+
+<div class="copytext">
+Aufwachen mit Blick auf den Ammersee — in unserem Gästehaus erwarten Sie 17 individuell eingerichtete Zimmer und Suiten, jedes mit Balkon oder Terrasse und Seeblick. Vom gemütlichen Doppelzimmer bis zum geräumigen 59-m²-Apartment mit Küchenzeile finden Sie bei uns die perfekte Unterkunft für jeden Anlass. Starten Sie den Tag mit unserem Frühstücksbuffet und genießen Sie abends mediterrane Küche in unserem Restaurant — alles unter einem Dach.
+</div>
+
+<h4>Sektionen</h4>
+<ol>
+  <li><strong>Hero:</strong> Panorama-Zimmer-Foto mit Seeblick + „Aufwachen am Ammersee"</li>
+  <li><strong>Zimmerübersicht:</strong> 8 Kacheln (je 1 pro Typ) mit Foto, Größe, Highlights, Preis „ab", CTA „Details & Buchen"</li>
+  <li><strong>Ausstattungs-Icons:</strong> WLAN | Seeblick | Balkon | TV | Safe | Haartrockner | Tiefgarage</li>
+  <li><strong>Frühstück:</strong> Foto Buffet + Beschreibung (inklusive)</li>
+  <li><strong>Direktbucher-Vorteil:</strong> „Buchen Sie direkt bei uns — bester Preis, keine Vermittlungsgebühren" + Buchungswidget</li>
+  <li><strong>Cross-Selling:</strong> „Kombinieren Sie Ihren Aufenthalt mit einem Dinner im Restaurant" + Link</li>
+</ol>
+
+<div class="content-block cta-block no-break">
+  <h4>Call-to-Actions</h4>
+  <ul>
+    <li>Primär: „Jetzt direkt buchen" (Buchungssystem)</li>
+    <li>Sekundär: „Verfügbarkeit prüfen"</li>
+    <li>Tertiär: „Restaurant entdecken" (Cross-Link)</li>
+  </ul>
+</div>
+
+<div class="content-block photo no-break">
+  <h4>Fotos benötigt (pro Zimmertyp!)</h4>
+  <ul class="checklist">
+    <li>1 Foto pro Zimmertyp (8 Fotos minimum)</li>
+    <li>Balkon/Terrasse mit Seeblick (Signature Shot)</li>
+    <li>Badezimmer</li>
+    <li>Frühstücksbuffet</li>
+    <li>Apartment-Küchenzeile</li>
+    <li>Gästehaus Außenansicht</li>
+  </ul>
+</div>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Seespitz Gästehaus — 17 Zimmer mit Seeblick am Ammersee</p>
+  <p><strong>Meta-Description:</strong> Übernachten direkt am Ammersee: 17 Zimmer & Suiten (21–59 m²), alle mit Seeblick und Balkon. Inklusive Frühstücksbuffet. Ab €110/Nacht. Direkt buchen zum besten Preis!</p>
+  <p><strong>Wichtig:</strong> Booking.com-Provision vermeiden! „Bestpreisgarantie bei Direktbuchung" prominent platzieren.</p>
+</div>
+
+<!-- ── TAGUNG ── -->
+<div class="page-break"></div>
+<div class="page-section">
+  <h3>Tagung & Seminare</h3>
+  <span class="page-url">/tagung</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Firmenanfragen generieren: Tagungen, Seminare, Retreats, Incentives</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Tagungshotel Ammersee, Seminarhotel Ammersee</td></tr>
+  <tr><td><strong>Sekundär-Keywords</strong></td><td>Konferenzraum Herrsching, Firmen-Retreat Bayern, Incentive Ammersee, Teambuilding Ammersee, Meeting Room Starnberg</td></tr>
+  <tr><td><strong>Schema</strong></td><td>MeetingRoom + EventVenue + Offer</td></tr>
+</table>
+
+<h4>Überschriften</h4>
+<ul>
+  <li><strong>H1:</strong> „Tagen mit Seeblick — Seminarhotel am Ammersee"</li>
+  <li><strong>H2:</strong> „Unser Tagungsraum"</li>
+  <li><strong>H2:</strong> „Technik & Ausstattung"</li>
+  <li><strong>H2:</strong> „Tagungspakete"</li>
+  <li><strong>H2:</strong> „Rahmenprogramm & Incentives"</li>
+</ul>
+
+<div class="copytext">
+Produktive Meetings in einzigartiger Atmosphäre: Unser 82 m² großer Tagungsraum direkt am Ammersee bietet Platz für bis zu 30 Personen — mit modernster Technik, flexiblen Bestuhlungsvarianten und einem Blick, der jede Pause zum Erlebnis macht. Kombinieren Sie Ihre Tagung mit Übernachtung in unserem Gästehaus und einem Dinner im Restaurant für das perfekte Komplett-Erlebnis.
+</div>
+
+<h4>Sektionen</h4>
+<ol>
+  <li><strong>Hero:</strong> Tagungsraum im Einsatz + „Tagen mit Seeblick"</li>
+  <li><strong>Raumdetails:</strong> Fläche, Teilbarkeit, Bestuhlungsvarianten (mit Piktogrammen)</li>
+  <li><strong>Technik:</strong> 85" Screen, Click Share, WLAN, Whiteboards — als Icon-Leiste</li>
+  <li><strong>Pakete:</strong> Tagespauschale, Halbtagespauschale, Kombi-Paket (Tagung + Übernachtung + Dinner)</li>
+  <li><strong>Incentives:</strong> SUP, Radtour, Hochseilgarten, Kloster Andechs — als Kacheln mit Icons</li>
+  <li><strong>Anfrage-Formular:</strong> Datum, Teilnehmer, Bestuhlungswunsch, Extras</li>
+  <li><strong>Cross-Selling:</strong> „17 Zimmer für Ihre Teilnehmer" + „Dinner im Restaurant"</li>
+</ol>
+
+<div class="content-block cta-block no-break">
+  <h4>Call-to-Actions</h4>
+  <ul>
+    <li>Primär: „Tagung anfragen" (Formular)</li>
+    <li>Sekundär: „Rahmenprogramm entdecken"</li>
+    <li>Tertiär: „Zimmer für Teilnehmer reservieren" (Cross-Link Gästehaus)</li>
+  </ul>
+</div>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Tagungshotel am Ammersee — 82m² Tagungsraum mit Seeblick | Seespitz</p>
+  <p><strong>Meta-Description:</strong> Seminarhotel Herrsching: 82m² Tagungsraum (bis 30 Pers.), 85" Screen, Click Share, 17 Gästezimmer, Restaurant. Tagungspauschalen auf Anfrage. Jetzt planen!</p>
+  <p><strong>Umsatzpotenzial:</strong> €5.000–15.000 pro Firmen-Retreat — diese Seite ist die wichtigste Umsatz-Seite!</p>
+</div>
+
+<!-- ── EVENTS & HOCHZEITEN ── -->
+<div class="page-break"></div>
+<div class="page-section">
+  <h3>Events & Hochzeiten</h3>
+  <span class="page-url">/events</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Hochzeits- und Event-Anfragen generieren — höchster Einzelumsatz pro Buchung!</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Hochzeitslocation Ammersee, Eventlocation Ammersee</td></tr>
+  <tr><td><strong>Sekundär-Keywords</strong></td><td>Hochzeit am See Bayern, Firmenfeier Ammersee, Event Herrsching, Geburtstag feiern Ammersee</td></tr>
+  <tr><td><strong>Schema</strong></td><td>EventVenue + Event + Offer</td></tr>
+</table>
+
+<h4>Überschriften</h4>
+<ul>
+  <li><strong>H1:</strong> „Ihre Traumhochzeit am Ammersee — Events im Seespitz"</li>
+  <li><strong>H2:</strong> „Hochzeiten"</li>
+  <li><strong>H2:</strong> „Firmenfeiern & Weihnachtsfeiern"</li>
+  <li><strong>H2:</strong> „Private Feiern — Geburtstage, Jubiläen, Reunions"</li>
+  <li><strong>H2:</strong> „Warum das Seespitz perfekt ist"</li>
+</ul>
+
+<div class="copytext">
+Feiern Sie Ihren schönsten Tag direkt am Ammersee. Das Seespitz bietet Ihnen alles aus einer Hand: Restaurant für bis zu 100 Gäste, eine private Galerie für den intimen Rahmen, 17 Zimmer für Ihre Übernachtungsgäste und den schönsten Sonnenuntergang am See als Kulisse. Von der Hochzeitsfeier über die Firmen-Weihnachtsfeier bis zum runden Geburtstag — wir machen Ihren Anlass unvergesslich.
+</div>
+
+<h4>Sektionen</h4>
+<ol>
+  <li><strong>Hero:</strong> Stimmungsvolles Event-Foto (gedeckte Tafel bei Sonnenuntergang) + „Ihr besonderer Anlass am Ammersee"</li>
+  <li><strong>Hochzeiten:</strong> Komplettpaket (Feier + 17 Zimmer + Brunch), Kapazitäten, Galerie für Sektempfang, Ablauf-Beispiel</li>
+  <li><strong>Firmenfeiern:</strong> Kapazität bis 100 Pers., Technik, Catering-Optionen, Kombination mit Tagung</li>
+  <li><strong>Private Feiern:</strong> Geburtstage, Jubiläen, Galerie (40 Pers. exklusiv)</li>
+  <li><strong>Warum Seespitz:</strong> USPs als Checkliste (Komplettpaket, Lage, Kapazität, Erfahrung)</li>
+  <li><strong>Referenzen:</strong> 2–3 Testimonials von Event-Kunden (wenn vorhanden)</li>
+  <li><strong>Anfrage-Formular:</strong> Art des Events, Datum, Gästeanzahl, Budget</li>
+</ol>
+
+<div class="content-block highlight no-break">
+  <h4>Umsatz-Fokus</h4>
+  <p><strong>Eine einzige Hochzeitsbuchung = €10.000–30.000 Umsatz.</strong> Diese Seite muss erstklassig sein — emotional, visuell stark, mit einfachem Anfrage-Prozess. Hochzeitspaare entscheiden zu 80% nach Bildern und Bauchgefühl.</p>
+</div>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Hochzeitslocation & Eventlocation am Ammersee — Seespitz Herrsching</p>
+  <p><strong>Meta-Description:</strong> Traumhochzeit am Ammersee: Restaurant (100 Gäste) + 17 Übernachtungszimmer + Sonnenuntergangs-Blick. Auch für Firmenfeiern und private Events. Jetzt Termin anfragen!</p>
+</div>
+
+<!-- ── AKTIVITÄTEN ── -->
+<div class="page-section">
+  <h3>Aktivitäten & Umgebung</h3>
+  <span class="page-url">/aktivitaeten</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Aufenthaltsdauer verlängern, Incentive-Kunden ansprechen, lokale SEO stärken</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Aktivitäten Ammersee, Ausflugsziele Herrsching</td></tr>
+  <tr><td><strong>Sekundär-Keywords</strong></td><td>SUP Ammersee, Wandern Ammersee, Kloster Andechs, Seepromenade Herrsching</td></tr>
+  <tr><td><strong>Schema</strong></td><td>TouristAttraction</td></tr>
+</table>
+
+<h4>Überschriften</h4>
+<ul>
+  <li><strong>H1:</strong> „Erleben Sie den Ammersee — Aktivitäten rund ums Seespitz"</li>
+  <li><strong>H2:</strong> „Wassersport" (SUP, Segeln)</li>
+  <li><strong>H2:</strong> „Wandern & Radfahren" (Kloster Andechs, Seepromenade)</li>
+  <li><strong>H2:</strong> „Abenteuer" (Hochseilgarten)</li>
+  <li><strong>H2:</strong> „Für Teams & Gruppen" (Incentive-Programme)</li>
+</ul>
+
+<div class="copytext">
+Der Ammersee und seine Umgebung bieten zu jeder Jahreszeit ein vielfältiges Programm. Starten Sie mit einer SUP-Tour auf dem See, wandern Sie zum legendären Kloster Andechs oder erkunden Sie Deutschlands längste Seepromenade direkt vor unserer Tür. Für Firmengruppen organisieren wir individuelle Incentive-Programme — vom Hochseilgarten bis zur geführten Radtour mit anschließendem Dinner im Seespitz.
+</div>
+
+<div class="content-block seo no-break">
+  <h4>SEO</h4>
+  <p><strong>Meta-Title:</strong> Aktivitäten am Ammersee — SUP, Wandern, Kloster Andechs | Seespitz Herrsching</p>
+  <p><strong>Meta-Description:</strong> Erleben Sie den Ammersee: SUP, Wanderung zum Kloster Andechs, Hochseilgarten, Radtouren. Incentive-Programme für Firmen. Direkt vom Seespitz Herrsching aus.</p>
+</div>
+
+<!-- ── KONTAKT ── -->
+<div class="page-break"></div>
+<div class="page-section">
+  <h3>Kontakt & Anfahrt</h3>
+  <span class="page-url">/kontakt</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Kontaktaufnahme erleichtern, Anfahrt klar machen, lokale SEO stärken</td></tr>
+  <tr><td><strong>Primär-Keyword</strong></td><td>Restaurant Herrsching Kontakt, Seespitz Anfahrt</td></tr>
+  <tr><td><strong>Schema</strong></td><td>LocalBusiness (NAP!) + GeoCoordinates + OpeningHoursSpecification</td></tr>
+</table>
+
+<h4>Inhalte</h4>
+<ol>
+  <li><strong>Kontaktdaten:</strong> Adresse, Telefon, E-Mail — für BEIDE Betriebe (Restaurant + Gästehaus)</li>
+  <li><strong>Google Maps Embed:</strong> Interaktive Karte</li>
+  <li><strong>Anfahrt:</strong> Auto (A96, Ausfahrt Herrsching), Bahn (S8 München → Herrsching), Schiff</li>
+  <li><strong>Parken:</strong> 15 eigene Parkplätze, Tiefgarage, E-Ladestationen</li>
+  <li><strong>Öffnungszeiten:</strong> Restaurant + Rezeption Gästehaus</li>
+  <li><strong>Kontaktformular:</strong> Name, E-Mail, Betreff (Reservierung/Buchung/Event/Sonstiges), Nachricht</li>
+</ol>
+
+<div class="content-block seo no-break">
+  <h4>SEO — Kritisch für Local SEO!</h4>
+  <p><strong>Meta-Title:</strong> Kontakt & Anfahrt — Seespitz Restaurant & Gästehaus Herrsching am Ammersee</p>
+  <p><strong>Meta-Description:</strong> So finden Sie uns: Mühlfeld 2, 82211 Herrsching am Ammersee. 15 Parkplätze, Tiefgarage, E-Ladestationen. Öffnungszeiten und Kontaktformular.</p>
+  <p><strong>NAP-Konsistenz:</strong> Name, Adresse, Telefon MÜSSEN exakt so geschrieben werden wie im Google Business Profile!</p>
+</div>
+
+<!-- ── ÜBER UNS ── -->
+<div class="page-section">
+  <h3>Über uns</h3>
+  <span class="page-url">/ueber-uns</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>Vertrauen aufbauen, persönliche Verbindung schaffen, E-E-A-T stärken</td></tr>
+  <tr><td><strong>Schema</strong></td><td>AboutPage + Person (Felix Schuck, Daniel Böhm)</td></tr>
+</table>
+
+<div class="copytext">
+Hinter dem Seespitz stehen Menschen mit Leidenschaft: Inhaber Felix Schuck hat den Seespitz-Komplex zu dem gemacht, was er heute ist — ein Ort, an dem Genuss, Gastfreundschaft und die einmalige Lage am Ammersee zusammenkommen. In der Küche führt Daniel Böhm sein Team mit mediterraner Handschrift und dem Anspruch, jeden Teller zu einem Erlebnis zu machen.
+</div>
+
+<h4>Inhalte</h4>
+<ul>
+  <li>Portrait Felix Schuck (Inhaber) — Foto + kurzer Text</li>
+  <li>Portrait Daniel Böhm (Küchenchef) — Foto + kurzer Text</li>
+  <li>Geschichte des Seespitz (wenn verfügbar)</li>
+  <li>Team-Fotos (optional)</li>
+  <li>Philosophie: Frische, Regionalität, Saisonalität, Gastfreundschaft</li>
+</ul>
+
+<!-- ── BLOG ── -->
+<div class="page-section">
+  <h3>Blog</h3>
+  <span class="page-url">/blog</span>
+</div>
+
+<table>
+  <tr><td><strong>Ziel</strong></td><td>SEO-Autorität aufbauen, Long-Tail Keywords abdecken, wiederkehrende Besucher</td></tr>
+  <tr><td><strong>Schema</strong></td><td>Blog + BlogPosting (pro Artikel)</td></tr>
+</table>
+
+<h4>Erste 6 Blog-Themen-Vorschläge</h4>
+<table>
+  <thead><tr><th>#</th><th>Titel</th><th>Keyword-Ziel</th><th>Typ</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>„10 Gründe, warum der Ammersee das perfekte Ziel für Ihre Hochzeit ist"</td><td>Hochzeit Ammersee</td><td>SEO-Artikel</td></tr>
+    <tr><td>2</td><td>„Tagen am Wasser: Warum Firmen-Retreats am See produktiver sind"</td><td>Firmen-Retreat Bayern</td><td>SEO-Artikel</td></tr>
+    <tr><td>3</td><td>„Unsere neue Herbstkarte: Kürbis, Trüffel und Ammersee-Fisch"</td><td>Saisonale Küche</td><td>Aktuell</td></tr>
+    <tr><td>4</td><td>„Von Herrsching zum Kloster Andechs: Die schönste Wanderung am Ammersee"</td><td>Wandern Ammersee</td><td>Lokal-Guide</td></tr>
+    <tr><td>5</td><td>„Das perfekte Wochenende am Ammersee: Essen, Schlafen, Erleben"</td><td>Wochenende Ammersee</td><td>Lokal-Guide</td></tr>
+    <tr><td>6</td><td>„Hinter den Kulissen: Ein Tag mit Küchenchef Daniel Böhm"</td><td>Brand/Vertrauen</td><td>Behind-the-Scenes</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     5. SEO-CHECKLISTE
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<h2>5. SEO-Checkliste</h2>
+
+<h3>Keywords pro Seite (Priorität)</h3>
+<table>
+  <thead><tr><th>Seite</th><th>Primär-Keyword</th><th>Sekundär-Keywords</th><th>Prio</th></tr></thead>
+  <tbody>
+    <tr><td>Startseite</td><td>Restaurant Ammersee</td><td>Gästehaus Ammersee, Eventlocation Ammersee</td><td><span class="tag tag-red">HOCH</span></td></tr>
+    <tr><td>Restaurant</td><td>Restaurant Herrsching am Ammersee</td><td>Mediterran Restaurant, Essen Herrsching, Seeblick Restaurant</td><td><span class="tag tag-red">HOCH</span></td></tr>
+    <tr><td>Speisekarte</td><td>Speisekarte Restaurant Herrsching</td><td>Mittagessen Ammersee, Brunch Ammersee</td><td><span class="tag tag-orange">MITTEL</span></td></tr>
+    <tr><td>Gästehaus</td><td>Hotel Herrsching Ammersee</td><td>Übernachtung Ammersee, Zimmer Seeblick, Pension Herrsching</td><td><span class="tag tag-red">HOCH</span></td></tr>
+    <tr><td>Tagung</td><td>Tagungshotel Ammersee</td><td>Seminarhotel Ammersee, Konferenzraum Herrsching, Firmen-Retreat Bayern</td><td><span class="tag tag-red">HOCH</span></td></tr>
+    <tr><td>Events</td><td>Hochzeitslocation Ammersee</td><td>Eventlocation Ammersee, Firmenfeier Ammersee, Hochzeit am See</td><td><span class="tag tag-red">HOCH</span></td></tr>
+    <tr><td>Aktivitäten</td><td>Aktivitäten Ammersee</td><td>SUP Ammersee, Wandern Herrsching, Kloster Andechs</td><td><span class="tag tag-orange">MITTEL</span></td></tr>
+    <tr><td>Kontakt</td><td>Seespitz Herrsching Kontakt</td><td>Restaurant Herrsching Anfahrt, Parken Herrsching</td><td><span class="tag tag-orange">MITTEL</span></td></tr>
+    <tr><td>Blog</td><td>Verschiedene Long-Tail Keywords</td><td>Je nach Artikel</td><td><span class="tag tag-green">LAUFEND</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Meta-Tags Übersicht</h3>
+<table>
+  <thead><tr><th>Seite</th><th>Meta-Title (max. 60 Zeichen)</th><th>Meta-Description (max. 155 Zeichen)</th></tr></thead>
+  <tbody>
+    <tr><td>/</td><td>Seespitz — Restaurant, Gästehaus & Events am Ammersee</td><td>Mediterranes Restaurant, 17 Zimmer mit Seeblick, Tagungsraum & Eventlocation in Herrsching. 4,7/5 Sterne. Jetzt entdecken!</td></tr>
+    <tr><td>/restaurant</td><td>Restaurant Seespitz — Mediterrane Küche am Ammersee</td><td>Gehobenes Restaurant in Herrsching: Saisonale Küche, Terrasse mit Sonnenuntergangs-Blick. 4,7/5 auf OpenTable. Reservieren!</td></tr>
+    <tr><td>/gaestehaus</td><td>Seespitz Gästehaus — 17 Zimmer mit Seeblick</td><td>Übernachten am Ammersee: Zimmer & Suiten (21–59 m²) mit Balkon und Seeblick. Frühstücksbuffet inkl. Ab €110/Nacht.</td></tr>
+    <tr><td>/tagung</td><td>Tagungshotel Ammersee — 82m² Tagungsraum | Seespitz</td><td>Seminarhotel Herrsching: 82m² Raum, 85" Screen, 17 Zimmer, Restaurant. Tagungspakete auf Anfrage.</td></tr>
+    <tr><td>/events</td><td>Hochzeitslocation & Events am Ammersee — Seespitz</td><td>Hochzeit am See: Restaurant (100 Gäste) + 17 Zimmer + Sonnenuntergang. Auch Firmenfeiern & private Events.</td></tr>
+    <tr><td>/aktivitaeten</td><td>Aktivitäten am Ammersee — SUP, Wandern & mehr</td><td>SUP, Kloster Andechs, Hochseilgarten, Radtouren. Incentive-Programme für Firmen. Vom Seespitz Herrsching.</td></tr>
+    <tr><td>/kontakt</td><td>Kontakt & Anfahrt — Seespitz Herrsching am Ammersee</td><td>Mühlfeld 2, 82211 Herrsching. 15 Parkplätze, Tiefgarage, E-Ladestationen. Öffnungszeiten & Kontakt.</td></tr>
+  </tbody>
+</table>
+
+<h3>Schema Markup — JSON-LD Empfehlungen</h3>
+
+<p>Folgende Schema-Typen sollten auf der Website implementiert werden:</p>
+
+<table>
+  <thead><tr><th>Schema-Typ</th><th>Seite</th><th>Enthält</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Restaurant</strong></td><td>/restaurant, /</td><td>Name, Adresse, Öffnungszeiten, Küche, Preisspanne, Telefon, URL, Geo</td></tr>
+    <tr><td><strong>Menu + MenuItem</strong></td><td>/speisekarte</td><td>Alle Gerichte mit Name, Beschreibung, Preis</td></tr>
+    <tr><td><strong>AggregateRating</strong></td><td>/restaurant, /gaestehaus</td><td>OpenTable 4,7/5 (500 Reviews), Booking.com Lage 9,7</td></tr>
+    <tr><td><strong>LodgingBusiness / Hotel</strong></td><td>/gaestehaus</td><td>Name, Adresse, Sterne, Preise, Zimmertypen, Ausstattung</td></tr>
+    <tr><td><strong>HotelRoom</strong></td><td>/gaestehaus</td><td>Pro Zimmertyp: Name, Größe, Bett, Ausstattung, Preis</td></tr>
+    <tr><td><strong>MeetingRoom</strong></td><td>/tagung</td><td>Fläche, Kapazität, Technik, Bestuhlungen</td></tr>
+    <tr><td><strong>EventVenue</strong></td><td>/events</td><td>Kapazität, Ausstattung, Event-Typen</td></tr>
+    <tr><td><strong>Event</strong></td><td>/events, /blog</td><td>Kommende Events (Datum, Ort, Beschreibung)</td></tr>
+    <tr><td><strong>LocalBusiness</strong></td><td>/kontakt</td><td>NAP-Daten, Geo, Öffnungszeiten, Parken</td></tr>
+    <tr><td><strong>BreadcrumbList</strong></td><td>Alle Seiten</td><td>Navigationspfad</td></tr>
+    <tr><td><strong>FAQPage</strong></td><td>/tagung, /events</td><td>Häufige Fragen (Kapazität, Preise, Parken etc.)</td></tr>
+  </tbody>
+</table>
+
+<h3>Interne Verlinkungsstrategie</h3>
+<table>
+  <thead><tr><th>Von</th><th>Nach</th><th>Ankertext-Beispiel</th></tr></thead>
+  <tbody>
+    <tr><td>Startseite</td><td>Alle Unterseiten</td><td>Je nach Kontext</td></tr>
+    <tr><td>Restaurant</td><td>Gästehaus</td><td>„Übernachten Sie in unserem Gästehaus"</td></tr>
+    <tr><td>Restaurant</td><td>Events</td><td>„Private Feiern im Seespitz"</td></tr>
+    <tr><td>Gästehaus</td><td>Restaurant</td><td>„Dinner in unserem Restaurant"</td></tr>
+    <tr><td>Gästehaus</td><td>Tagung</td><td>„Tagungsraum für Geschäftsreisende"</td></tr>
+    <tr><td>Tagung</td><td>Gästehaus</td><td>„17 Zimmer für Ihre Teilnehmer"</td></tr>
+    <tr><td>Tagung</td><td>Aktivitäten</td><td>„Rahmenprogramm & Incentives"</td></tr>
+    <tr><td>Events</td><td>Gästehaus</td><td>„17 Zimmer für Ihre Hochzeitsgäste"</td></tr>
+    <tr><td>Aktivitäten</td><td>Tagung</td><td>„Incentive-Programme für Firmen"</td></tr>
+    <tr><td>Blog</td><td>Alle relevanten Seiten</td><td>Kontextuell</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     6. DESIGN-EMPFEHLUNGEN
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<h2>6. Design-Empfehlungen</h2>
+
+<h3>Farbpalette</h3>
+<div class="stat-row">
+  <div class="stat-box" style="background:#1a1a2e;"><div class="value" style="color:#fff;font-size:10pt;">#1a1a2e</div><div class="label" style="color:rgba(255,255,255,0.6);">Dunkel / Text</div></div>
+  <div class="stat-box" style="background:#2c5f7c;"><div class="value" style="color:#fff;font-size:10pt;">#2c5f7c</div><div class="label" style="color:rgba(255,255,255,0.6);">See-Blau</div></div>
+  <div class="stat-box" style="background:#c9a96e;"><div class="value" style="color:#fff;font-size:10pt;">#c9a96e</div><div class="label" style="color:rgba(255,255,255,0.6);">Warm-Gold</div></div>
+  <div class="stat-box" style="background:#f5f0e8;"><div class="value" style="color:#333;font-size:10pt;">#f5f0e8</div><div class="label">Creme / Hintergrund</div></div>
+  <div class="stat-box" style="background:#ffffff;border:1px solid #ddd;"><div class="value" style="color:#333;font-size:10pt;">#ffffff</div><div class="label">Weiß / Cards</div></div>
+</div>
+<p><em>Inspiration: Warmes Mittelmeer-Feeling trifft bayerische See-Landschaft. Gold-Töne für Premium-Akzente, See-Blau für Vertrauen und Frische.</em></p>
+
+<h3>Typografie</h3>
+<table>
+  <tr><td><strong>Headlines</strong></td><td>Playfair Display (Serif) oder Cormorant — elegant, gastro-geeignet</td></tr>
+  <tr><td><strong>Fließtext</strong></td><td>Inter, Source Sans, oder Lato — klar, modern, gut lesbar</td></tr>
+  <tr><td><strong>Akzente</strong></td><td>Font-Weight 700/800 für Zahlen, Preise, CTAs</td></tr>
+</table>
+
+<h3>Layout-Prinzipien</h3>
+<ul>
+  <li><strong>Hero-Sections:</strong> Jede Seite beginnt mit Vollbild-Foto + Overlay-Text + CTA</li>
+  <li><strong>Bild-Text-Wechsel:</strong> Abwechselnd links Bild / rechts Text und umgekehrt</li>
+  <li><strong>Kachel-System:</strong> Zimmertypen, Aktivitäten, Events als Grid-Kacheln mit Hover-Effekt</li>
+  <li><strong>Sticky CTA:</strong> „Tisch reservieren" / „Zimmer buchen" als Sticky-Button (Mobile)</li>
+  <li><strong>Footer:</strong> Beide Adressen, Öffnungszeiten, Social Links, Bewertungs-Badges, Newsletter-Signup</li>
+  <li><strong>Mobile-First:</strong> 70%+ der Besucher kommen über Mobile — alle Inhalte müssen mobil perfekt funktionieren</li>
+</ul>
+
+<h3>Header / Navigation</h3>
+<p>Empfehlung: Sticky Header mit Logo links, Hauptnavigation mittig, zwei CTA-Buttons rechts:</p>
+<table>
+  <thead><tr><th>Nav-Item</th><th>Dropdown</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Restaurant</strong></td><td>Konzept | Speisekarte | Galerie</td></tr>
+    <tr><td><strong>Gästehaus</strong></td><td>Zimmer & Suiten | Frühstück | Direkt buchen</td></tr>
+    <tr><td><strong>Tagung</strong></td><td>Tagungsraum | Pakete | Incentives</td></tr>
+    <tr><td><strong>Events</strong></td><td>Hochzeiten | Firmenfeiern | Private Feiern</td></tr>
+    <tr><td><strong>Aktivitäten</strong></td><td>—</td></tr>
+    <tr><td><strong>Über uns</strong></td><td>—</td></tr>
+    <tr><td><strong>Kontakt</strong></td><td>—</td></tr>
+  </tbody>
+</table>
+<p><strong>CTA-Buttons:</strong> <span class="tag tag-green">Tisch reservieren</span> <span class="tag tag-blue">Zimmer buchen</span></p>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     7. TECHNISCHE EMPFEHLUNGEN
+     ═══════════════════════════════════════════════════════════════ -->
+<h2>7. Technische Empfehlungen</h2>
+
+<table>
+  <thead><tr><th>Thema</th><th>Empfehlung</th><th>Warum</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CMS</strong></td><td>WordPress + Elementor oder Bricks Builder</td><td>SEO-freundlich, flexibel, Schema-Plugins verfügbar</td></tr>
+    <tr><td><strong>Hosting</strong></td><td>Managed WordPress (z.B. Raidboxes, All-Inkl, WPEngine)</td><td>Schnell, sicher, deutsches Hosting für DSGVO</td></tr>
+    <tr><td><strong>SSL</strong></td><td>Let's Encrypt (kostenlos) oder Provider-SSL</td><td>Pflicht für Google-Ranking und Vertrauen</td></tr>
+    <tr><td><strong>Ladezeit</strong></td><td>< 3 Sekunden (LCP), < 200ms (INP)</td><td>Core Web Vitals für Ranking</td></tr>
+    <tr><td><strong>Bilder</strong></td><td>WebP-Format, Lazy Loading, max. 200KB pro Bild</td><td>Schnelle Ladezeiten</td></tr>
+    <tr><td><strong>Schema Plugin</strong></td><td>Rank Math SEO oder Yoast SEO (Premium)</td><td>Schema Markup ohne Code-Kenntnisse</td></tr>
+    <tr><td><strong>Buchungssystem</strong></td><td>Eigenes Buchungswidget oder Lodgify/Beds24 einbetten</td><td>Booking.com-Provision vermeiden</td></tr>
+    <tr><td><strong>Reservierung</strong></td><td>OpenTable Widget oder eigenes Formular</td><td>Direkte Reservierungen</td></tr>
+    <tr><td><strong>Cookie-Banner</strong></td><td>Borlabs Cookie oder Real Cookie Banner</td><td>DSGVO-konform</td></tr>
+    <tr><td><strong>Analytics</strong></td><td>Google Analytics 4 + Google Search Console</td><td>Tracking und SEO-Monitoring</td></tr>
+    <tr><td><strong>Sitemap</strong></td><td>XML-Sitemap automatisch (Rank Math / Yoast)</td><td>Google-Indexierung beschleunigen</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     8. DATENLÜCKEN
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<h2>8. Datenlücken — Beim Kunden erfragen</h2>
+
+<p>Folgende Informationen fehlen und müssen vor dem Website-Bau beim Kunden eingeholt werden:</p>
+
+<table>
+  <thead><tr><th>Info</th><th>Benötigt für</th><th>Prio</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Professionelle Fotos</strong> (Restaurant, Zimmer, Tagungsraum, Gerichte, Team)</td><td>Alle Seiten</td><td><span class="tag tag-red">KRITISCH</span></td></tr>
+    <tr><td><strong>Logo</strong> (Vektordatei / SVG / hohe Auflösung)</td><td>Header, Favicon, Footer</td><td><span class="tag tag-red">KRITISCH</span></td></tr>
+    <tr><td><strong>Aktuelle Speisekarte</strong> (alle Gerichte mit Preisen)</td><td>/speisekarte</td><td><span class="tag tag-red">KRITISCH</span></td></tr>
+    <tr><td><strong>Zimmerpreise pro Typ</strong> (nicht nur Range)</td><td>/gaestehaus</td><td><span class="tag tag-red">KRITISCH</span></td></tr>
+    <tr><td><strong>Tagungsraum-Pauschalen</strong> (pro Person/Tag)</td><td>/tagung</td><td><span class="tag tag-red">KRITISCH</span></td></tr>
+    <tr><td><strong>Öffnungszeiten</strong> (Restaurant + Rezeption, saisonal?)</td><td>/kontakt, Schema</td><td><span class="tag tag-red">KRITISCH</span></td></tr>
+    <tr><td><strong>Google Business Profile Zugangsdaten</strong></td><td>GBP-Optimierung</td><td><span class="tag tag-orange">HOCH</span></td></tr>
+    <tr><td><strong>Google-Bewertungen</strong> (Anzahl und Score)</td><td>Social Proof, Schema</td><td><span class="tag tag-orange">HOCH</span></td></tr>
+    <tr><td>Gewünschte Domain (neue Domain oder bestehende?)</td><td>Hosting-Setup</td><td><span class="tag tag-orange">HOCH</span></td></tr>
+    <tr><td>Bestehende E-Mail-Adressen (welche behalten?)</td><td>Kontaktformulare</td><td><span class="tag tag-orange">HOCH</span></td></tr>
+    <tr><td>Event-Referenzen / Testimonials</td><td>/events</td><td><span class="tag tag-blue">MITTEL</span></td></tr>
+    <tr><td>Geschichte des Seespitz / Team-Infos</td><td>/ueber-uns</td><td><span class="tag tag-blue">MITTEL</span></td></tr>
+    <tr><td>Bestehende Fotos (gibt es professionelle?)</td><td>Alle Seiten</td><td><span class="tag tag-blue">MITTEL</span></td></tr>
+    <tr><td>Saisonabhängigkeit (ganzjährig offen?)</td><td>Öffnungszeiten, Content</td><td><span class="tag tag-blue">MITTEL</span></td></tr>
+    <tr><td>Social Media Zugangsdaten</td><td>Verlinkung, Feed-Einbindung</td><td><span class="tag tag-blue">MITTEL</span></td></tr>
+    <tr><td>Frühstückszeiten und -details</td><td>/gaestehaus</td><td><span class="tag tag-blue">MITTEL</span></td></tr>
+    <tr><td>Konkrete Incentive-Partner (SUP-Verleih etc.)</td><td>/aktivitaeten</td><td><span class="tag tag-green">NIEDRIG</span></td></tr>
+    <tr><td>Weinliste / Getränkekarte</td><td>/speisekarte</td><td><span class="tag tag-green">NIEDRIG</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     9. ZUSAMMENFASSUNG
+     ═══════════════════════════════════════════════════════════════ -->
+<h2>9. Zusammenfassung</h2>
+
+<div class="stat-row">
+  <div class="stat-box"><div class="value">11</div><div class="label">Seiten</div></div>
+  <div class="stat-box"><div class="value">8</div><div class="label">USPs</div></div>
+  <div class="stat-box"><div class="value">11</div><div class="label">Schema-Typen</div></div>
+  <div class="stat-box"><div class="value">9</div><div class="label">Primär-Keywords</div></div>
+  <div class="stat-box"><div class="value">18</div><div class="label">Datenlücken</div></div>
+</div>
+
+<div class="content-block highlight">
+  <h4>Die 3 wichtigsten Umsatz-Seiten</h4>
+  <ol>
+    <li><strong>/events</strong> — Hochzeiten: €10.000–30.000 pro Event</li>
+    <li><strong>/tagung</strong> — Firmen-Retreats: €5.000–15.000 pro Event</li>
+    <li><strong>/gaestehaus</strong> — Direktbuchungen statt 15–25% Booking.com-Provision</li>
+  </ol>
+  <p style="margin-top:6px;">Diese 3 Seiten müssen inhaltlich und visuell am stärksten sein. Hier liegt das Geld.</p>
+</div>
+
+<h3>Nächste Schritte</h3>
+<ul class="checklist">
+  <li>Datenlücken beim Kunden erfragen (vor allem: Fotos, Speisekarte, Preise)</li>
+  <li>Domain-Entscheidung treffen (1 neue Domain oder bestehende zusammenführen?)</li>
+  <li>WordPress-Hosting einrichten</li>
+  <li>Design-Mockup für Startseite erstellen</li>
+  <li>Content schreiben (Textvorschläge aus diesem Briefing als Basis)</li>
+  <li>Schema Markup implementieren</li>
+  <li>Buchungssystem auswählen und einrichten</li>
+  <li>Google Business Profile übernehmen und optimieren</li>
+</ul>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="doc-footer">
+  MyHiwi UG (haftungsbeschränkt) · Denis Kaliberda · info@myhiwi.de<br>
+  Website-Briefing Seespitz Gesamtkomplex · Erstellt: 19. Februar 2026
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* ─── Seespitz Design Tokens ─────────────────────────────────────────── */
+
+:root {
+  --color-navy: #1a1a2e;
+  --color-lake: #2c5f7c;
+  --color-gold: #c9a96e;
+  --color-gold-light: #d4b87d;
+  --color-gold-dark: #b8954f;
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #ebe4d8;
+  --color-white: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-light: #4a4a5a;
+  --color-text-muted: #6b7280;
+
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
+
+@theme inline {
+  --color-navy: var(--color-navy);
+  --color-lake: var(--color-lake);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-cream: var(--color-cream);
+  --color-cream-dark: var(--color-cream-dark);
+  --color-text: var(--color-text);
+  --color-text-light: var(--color-text-light);
+  --color-text-muted: var(--color-text-muted);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--color-text);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading), Georgia, serif;
+}
+
+/* ─── Ken Burns Animation ────────────────────────────────────────────── */
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 10s ease-out forwards;
+}
+
+/* ─── Selection Color ────────────────────────────────────────────────── */
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+}
